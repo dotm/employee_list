@@ -1,0 +1,50 @@
+<body>
+    <h1>Daftar Karyawan</h1>
+
+    <form class="new-employee">
+        <h2>Add Employee (Tambah Karyawan Baru)</h2>
+        <input type="text" name="name" placeholder="Nama Karyawan" />
+        <input type="text" name="nik" placeholder="Nomor Induk Karyawan" />
+        <input type="text" name="dept" placeholder="Departemen" />
+        <input type="text" name="pos" placeholder="Posisi" />
+        <input type="submit">
+    </form>
+
+    <h2>Tabel Daftar Karyawan</h2>
+    <table>
+        <thead>
+            <th>Nama</th>
+            <th>NIK</th>
+            <th>Departemen</th>
+            <th>Posisi</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            {{#each employees}}
+                {{> employee}}
+            {{/each}}
+        </tbody>
+    </table>
+
+    <form class="update-employee">
+        <h2>Edit Employee (Ubah Informasi Karyawan)</h2>
+        Klik salah satu tombol Edit dari Tabel Daftar Karyawan untuk mengedit.<br/>
+        <input type="text" class="name" name="name" placeholder="Nama Karyawan" />
+        <input type="text" class="nik" name="nik" placeholder="Nomor Induk Karyawan" />
+        <input type="text" class="dept" name="dept" placeholder="Departemen" />
+        <input type="text" class="pos" name="pos" placeholder="Posisi" />
+        <input type="submit">
+    </form>
+</body>
+
+<template name="employee">
+    <tr>
+        <td>{{name}}</td>
+        <td>{{nik}}</td>
+        <td>{{dept}}</td>
+        <td>{{pos}}</td>
+        <td><button class='edit'>Edit</button></td>
+        <td><button class='delete'>Delete</button></td>
+    </tr>
+</template>

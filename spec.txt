@@ -1,0 +1,12 @@
+Add Employee
+
+No: Auto increment
+Name of employee:
+NIK:
+Department:
+Position:
+
+Edit
+Delete
+
+Pagination 5 employees per page

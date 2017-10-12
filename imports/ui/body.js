@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
 import { $ } from 'meteor/jquery';
 
 import './body.html';
@@ -68,8 +69,38 @@ Template.body.events({
   },
 });
 
+Template.body.onCreated(function(){
+  this.page = new ReactiveVar(1)
+});
+
+let employeesPerPage = 5
 Template.body.helpers({
   employees(){
-    return Employees.find({});
+    return Employees.find({},{
+      skip: ((Template.instance().page.get() - 1) * employeesPerPage),
+      limit: 5
+    });
   },
+  pages(){
+    let array = [];
+    let totalEmployees = Employees.find().count()
+    let totalPages = Math.ceil(totalEmployees/employeesPerPage)
+
+    for(let page_number = 1; page_number <= totalPages; page_number++){
+      array.push({'page_number':page_number})
+    }
+    return array;
+  },
+  current_page(){
+    return Template.instance().page.get()
+  }
 });
+
+Template.body.events({
+  'click .page_number'(event, instance){
+    // Prevent default browser form submit
+    event.preventDefault();
+    
+    instance.page.set(parseInt(event.target.id))
+  }
+})

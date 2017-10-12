@@ -11,7 +11,7 @@
     </form>
 
     <h2>Tabel Daftar Karyawan</h2>
-    <table>
+    <table class="employee-list">
         <thead>
             <th>Nama</th>
             <th>NIK</th>
@@ -26,6 +26,14 @@
             {{/each}}
         </tbody>
     </table>
+    
+    <p>
+        Ganti halaman: 
+        {{#each pages}}
+            {{> page}}
+        {{/each}}
+    </p>
+    <p>Anda berada di halaman {{current_page}}.</p>
 
     <form class="update-employee">
         <h2>Edit Employee (Ubah Informasi Karyawan)</h2>
@@ -47,4 +55,8 @@
         <td><button class='edit'>Edit</button></td>
         <td><button class='delete'>Delete</button></td>
     </tr>
+</template>
+
+<template name="page">
+    <a href="#" class="page_number" id={{page_number}}>{{page_number}}</a>
 </template>

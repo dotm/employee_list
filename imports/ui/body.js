@@ -12,7 +12,17 @@ Template.body.events({
  
     // Add new employee
     const target = event.target;
+    function getMaxEmployeeNumber(){
+      let currentMaxEmployee = Employees.findOne({},{sort:{number: -1}})
+      if(currentMaxEmployee !== undefined){
+        return currentMaxEmployee.number + 1;
+      }else{
+        //if no employee exist yet
+        return 1;
+      }
+    }
     Employees.insert({
+      number: getMaxEmployeeNumber(),
       name: target.name.value,
       nik: target.nik.value,
       dept: target.dept.value,

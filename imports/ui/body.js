@@ -34,6 +34,8 @@ Template.body.events({
     target.nik.value = ''
     target.dept.value = ''
     target.pos.value = ''
+
+    alert("Karyawan berhasil ditambahkan.");
   },
   'click .edit'(){
     let name = prompt(`Ganti nama dari ${this.name}`, this.name);

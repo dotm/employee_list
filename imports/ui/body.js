@@ -36,46 +36,41 @@ Template.body.events({
     target.pos.value = ''
   },
   'click .edit'(){
-    let form = $('.update-employee')
-    let data = Employees.findOne(this._id)
-
-    // Pass MongoDB ObjectID to be used when edit form is submitted
-    form.data({"_id": this._id})
+    let name = prompt(`Ganti nama dari ${this.name}`, this.name);
+    let nik = prompt(`Ganti NIK dari ${this.name}`, this.nik);
+    let dept = prompt(`Ganti departemen dari ${this.name}`, this.dept);
+    let pos = prompt(`Ganti jabatan dari ${this.name}`, this.pos);
     
-    form.children('.name').val(data.name)
-    form.children('.nik').val(data.nik)
-    form.children('.dept').val(data.dept)
-    form.children('.pos').val(data.pos)
+    let old_data = {
+      Nama: this.name,
+      NIK: this.nik,
+      Departemen: this.dept,
+      Jabatan: this.pos
+    }
+    let new_data = {
+      Nama: name,
+      NIK: nik,
+      Departemen: dept,
+      Jabatan: pos
+    }
 
-    form.children('.name').focus()
-  },
-  'submit .update-employee'(event){
-    let form = $('.update-employee')
-    // Prevent default browser form submit
-    event.preventDefault();
-
-    // Update employee
-    const target = event.target;
-    Employees.update(
-      {_id: form.data("_id")},
-      {$set:
-        {
-          name: target.name.value,
-          nik: target.nik.value,
-          dept: target.dept.value,
-          pos: target.pos.value
-        }
-      }
-    )
-
-    // Clear form
-    target.name.value = ''
-    target.nik.value = ''
-    target.dept.value = ''
-    target.pos.value = ''
+    let answer = confirm(
+      `Ganti Karyawan ini (${this.name})?`
+      + '\n\n' +
+      "Data lama:\n" + JSON.stringify(old_data, null, 4)
+      + '\n\n' +
+      "Data baru:\n" + JSON.stringify(new_data, null, 4)
+    );
+    if(answer){
+      // Update employee
+      Employees.update(
+        {_id: this._id},
+        {$set:{name, nik, dept, pos}}
+      )
+    }
   },
   'click .delete'(){
-    var answer = confirm(`Hapus Karyawan ini (${this.name})?`);
+    let answer = confirm(`Hapus Karyawan ini (${this.name})?`);
     if(answer){Employees.remove(this._id)}
   },
 });

@@ -38,12 +38,13 @@ Template.body.helpers({
   }
 });
 
+// Basic CRUD events
 Template.body.events({
+  // CREATE: Add new employee
   'submit .new-employee'(event) {
     // Prevent default browser form submit
     event.preventDefault();
  
-    // Add new employee
     function getMaxEmployeeNumber(){
       let currentMaxEmployee = Employees.findOne({},{sort:{number: -1}})
       if(currentMaxEmployee !== undefined){
@@ -71,6 +72,8 @@ Template.body.events({
 
     alert("Karyawan berhasil ditambahkan.");
   },
+
+  // UPDATE: Edit employee data
   'click .edit'(){
     let name = prompt(`Ganti nama dari ${this.name}`, this.name);
     let nik = prompt(`Ganti NIK dari ${this.name}`, this.nik);
@@ -102,15 +105,25 @@ Template.body.events({
       Meteor.call('employees.update', this._id, employeeObj)
     }
   },
+
+  // DELETE: Delete an employee entry
   'click .delete'(){
     let answer = confirm(`Hapus Karyawan ini (${this.name})?`);
     if(answer){Meteor.call('employees.remove', this._id)}
   },
+});
+
+// Event for changing page number
+Template.body.events({
   'click .page_number'(event, instance){
     // Prevent default browser hyperlink click
     event.preventDefault();
     instance.page.set(parseInt(event.target.id))
   },
+});
+
+// Events for changing sorting key and order
+Template.body.events({
   'change .sorting.key'(event, instance){
     let key = $(event.target).val()
     instance.keyForSorting.set(key)
@@ -118,5 +131,5 @@ Template.body.events({
   'change .sorting.order'(event, instance){
     let order = $(event.target).val()
     instance.orderForSorting.set(order)
-  }
+  },
 });

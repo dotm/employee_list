@@ -13,6 +13,7 @@
         </form>
 
         <h2>Tabel Daftar Karyawan</h2>
+        {{> sorting}}
         <table class="employee-list">
             <thead>
                 <th>Nomor</th>
@@ -54,4 +55,19 @@
 
 <template name="page">
     <a href="#" class="page_number" id={{page_number}}>{{page_number}}</a>
+</template>
+
+<template name="sorting">
+    Sort Table (Sortir Tabel):
+    <select class="sorting key">
+        <option value="number">Nomor</option> 
+        <option value="name">Nama</option>
+        <option value="nik">NIK</option>
+        <option value="dept">Departemen</option>
+        <option value="pos">Posisi</option>
+    </select>
+    <select class="sorting order">
+        <option value="1">Ascending</option> 
+        <option value="-1">Descending</option>
+    </select>
 </template>

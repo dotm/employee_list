@@ -5,6 +5,11 @@ import { $ } from 'meteor/jquery';
 import './body.html';
 import {Employees} from '../api/employees.js';
 
+Template.body.onCreated(function(){
+  this.page = new ReactiveVar(1)
+  Meteor.subscribe('employees')
+});
+
 Template.body.events({
   'submit .new-employee'(event) {
     // Prevent default browser form submit
@@ -73,10 +78,6 @@ Template.body.events({
     let answer = confirm(`Hapus Karyawan ini (${this.name})?`);
     if(answer){Meteor.call('employees.remove', this._id)}
   },
-});
-
-Template.body.onCreated(function(){
-  this.page = new ReactiveVar(1)
 });
 
 let employeesPerPage = 5

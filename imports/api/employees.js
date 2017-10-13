@@ -4,6 +4,13 @@ import { check } from 'meteor/check'
 
 export const Employees = new Mongo.Collection('employees');
 
+if (Meteor.isServer) {
+    // This code only runs on the server
+    Meteor.publish('employees', function employeesPublication() {
+        return Employees.find();
+    });
+}
+
 Meteor.methods({
     'employees.insert'(employeeObj){
         // Make sure the user is logged in before inserting a task

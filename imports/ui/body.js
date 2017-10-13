@@ -75,7 +75,8 @@ Template.body.events({
     target.pos.value = ''
   },
   'click .delete'(){
-    Employees.remove(this._id)
+    var answer = confirm(`Hapus Karyawan ini (${this.name})?`);
+    if(answer){Employees.remove(this._id)}
   },
 });
 

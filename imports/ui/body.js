@@ -11,7 +11,6 @@ Template.body.events({
     event.preventDefault();
  
     // Add new employee
-    const target = event.target;
     function getMaxEmployeeNumber(){
       let currentMaxEmployee = Employees.findOne({},{sort:{number: -1}})
       if(currentMaxEmployee !== undefined){
@@ -21,13 +20,15 @@ Template.body.events({
         return 1;
       }
     }
-    Employees.insert({
+    const target = event.target;
+    let newEmployee = {
       number: getMaxEmployeeNumber(),
       name: target.name.value,
       nik: target.nik.value,
       dept: target.dept.value,
       pos: target.pos.value
-    })
+    }
+    Meteor.call('employees.insert', newEmployee)
 
     // Clear form
     target.name.value = ''
@@ -55,7 +56,6 @@ Template.body.events({
       Departemen: dept,
       Jabatan: pos
     }
-
     let answer = confirm(
       `Ganti Karyawan ini (${this.name})?`
       + '\n\n' +
@@ -63,17 +63,15 @@ Template.body.events({
       + '\n\n' +
       "Data baru:\n" + JSON.stringify(new_data, null, 4)
     );
+
+    let employeeObj = {name, nik, dept, pos}
     if(answer){
-      // Update employee
-      Employees.update(
-        {_id: this._id},
-        {$set:{name, nik, dept, pos}}
-      )
+      Meteor.call('employees.update', this._id, employeeObj)
     }
   },
   'click .delete'(){
     let answer = confirm(`Hapus Karyawan ini (${this.name})?`);
-    if(answer){Employees.remove(this._id)}
+    if(answer){Meteor.call('employees.remove', this._id)}
   },
 });
 

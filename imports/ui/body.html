@@ -1,44 +1,51 @@
 <body>
-    <h1>Daftar Karyawan</h1>
-    {{> loginButtons}}
-
-    {{#if currentUser}}
-        <form class="new-employee">
-            <h2>Add Employee (Tambah Karyawan Baru)</h2>
-            <input type="text" name="name" placeholder="Nama Karyawan" />
-            <input type="text" name="nik" placeholder="Nomor Induk Karyawan" />
-            <input type="text" name="dept" placeholder="Departemen" />
-            <input type="text" name="pos" placeholder="Posisi" />
-            <input type="submit">
-        </form>
-
-        <h2>Tabel Daftar Karyawan</h2>
-        {{> sorting}}
-        <table class="employee-list">
-            <thead>
-                <th>Nomor</th>
-                <th>Nama</th>
-                <th>NIK</th>
-                <th>Departemen</th>
-                <th>Posisi</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </thead>
-            <tbody>
-                {{#each employees}}
-                    {{> employee}}
-                {{/each}}
-            </tbody>
-        </table>
-        
-        <p>
-            Ganti halaman: 
-            {{#each pages}}
-                {{> page}}
-            {{/each}}
-        </p>
-        <p>Anda berada di halaman {{current_page}}.</p>
-    {{/if}}
+    <div class='container'>
+        <div class="text-center">
+            <h2>Daftar Karyawan</h2>
+            {{> loginButtons}}
+        </div>
+    
+        {{#if currentUser}}
+            <form class="new-employee form-inline">
+                <h3>Add Employee (Tambah Karyawan Baru)</h3>
+                <input class="form-control" type="text" name="name" placeholder="Nama Karyawan" />
+                <input class="form-control" type="text" name="nik" placeholder="Nomor Induk Karyawan" />
+                <input class="form-control" type="text" name="dept" placeholder="Departemen" />
+                <input class="form-control" type="text" name="pos" placeholder="Posisi" />
+                <input class="btn btn-default" type="submit">
+            </form>
+    
+            <h3>Tabel Daftar Karyawan</h3>
+            {{> sorting}}
+            <br/>
+            <table class="table table-hover table-condensed table-bordered employee-list">
+                <thead class="text-center">
+                    <th>Nomor</th>
+                    <th>Nama</th>
+                    <th>NIK</th>
+                    <th>Departemen</th>
+                    <th>Posisi</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {{#each employees}}
+                        {{> employee}}
+                    {{/each}}
+                </tbody>
+            </table>
+            
+            <div>
+                <h4 style="display: inline-block; vertical-align: middle;">Ganti halaman: </h4>
+                <ul style="display: inline-block; vertical-align: middle;" class="pagination pagination-sm">
+                    {{#each pages}}
+                        {{> page}}
+                    {{/each}}
+                </ul>
+            </div>
+            
+            <h4>Anda berada di halaman {{current_page}}.</h4>
+        {{/if}}
+    </div>
 </body>
 
 <template name="employee">
@@ -48,26 +55,30 @@
         <td>{{nik}}</td>
         <td>{{dept}}</td>
         <td>{{pos}}</td>
-        <td><button class='edit'>Edit</button></td>
-        <td><button class='delete'>Delete</button></td>
+        <td>
+            <button class='btn btn-warning edit'>Edit</button>
+            <button class='btn btn-danger delete'>Delete</button>
+        </td>
     </tr>
 </template>
 
 <template name="page">
-    <a href="#" class="page_number" id={{page_number}}>{{page_number}}</a>
+    <li><a href="#" class="page_number" id={{page_number}}>{{page_number}}</a></li>
 </template>
 
 <template name="sorting">
-    Sort Table (Sortir Tabel):
-    <select class="sorting key">
-        <option value="number">Nomor</option> 
-        <option value="name">Nama</option>
-        <option value="nik">NIK</option>
-        <option value="dept">Departemen</option>
-        <option value="pos">Posisi</option>
-    </select>
-    <select class="sorting order">
-        <option value="1">Ascending</option> 
-        <option value="-1">Descending</option>
-    </select>
+    <div class="sorting">
+        Sort Table (Sortir Tabel):
+        <select class="btn btn-default dropdown-toggle sorting key">
+            <option value="number">Nomor</option> 
+            <option value="name">Nama</option>
+            <option value="nik">NIK</option>
+            <option value="dept">Departemen</option>
+            <option value="pos">Posisi</option>
+        </select>
+        <select class="btn btn-default dropdown-toggle sorting order">
+            <option value="1">Ascending</option> 
+            <option value="-1">Descending</option>
+        </select>
+    </div>
 </template>

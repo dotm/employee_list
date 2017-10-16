@@ -1,0 +1,84 @@
+<template name='list'>
+    <div class='col-md-offset-3'>
+        <div class="text-center">
+            <h2>Daftar Karyawan</h2>
+            {{> loginButtons}}
+        </div>
+    
+        {{#if currentUser}}
+            <form class="new-employee form-inline">
+                <h3>Add Employee (Tambah Karyawan Baru)</h3>
+                <input class="form-control" type="text" name="name" placeholder="Nama Karyawan" />
+                <input class="form-control" type="text" name="nik" placeholder="Nomor Induk Karyawan" />
+                <input class="form-control" type="text" name="dept" placeholder="Departemen" />
+                <input class="form-control" type="text" name="pos" placeholder="Posisi" />
+                <input class="btn btn-default" type="submit">
+            </form>
+    
+            <h3>Tabel Daftar Karyawan</h3>
+            {{> sorting}}
+            <br/>
+            <table class="table table-hover table-condensed table-bordered employee-list">
+                <thead class="text-center">
+                    <th>Nomor</th>
+                    <th>Nama</th>
+                    <th>NIK</th>
+                    <th>Departemen</th>
+                    <th>Posisi</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {{#each employees}}
+                        {{> employee}}
+                    {{/each}}
+                </tbody>
+            </table>
+            
+            <div>
+                <h4 style="display: inline-block; vertical-align: middle;">Ganti halaman: </h4>
+                <ul style="display: inline-block; vertical-align: middle;" class="pagination pagination-sm">
+                    {{#each pages}}
+                        {{> page}}
+                    {{/each}}
+                </ul>
+            </div>
+            
+            <h4>Anda berada di halaman {{current_page}}.</h4>
+        {{/if}}
+    </div>
+</template>
+
+<template name="employee">
+    <tr>
+        <td>{{number}}</td>
+        <td>{{name}}</td>
+        <td>{{nik}}</td>
+        <td>{{dept}}</td>
+        <td>{{pos}}</td>
+        <td>
+            <button class='btn btn-warning edit'>Edit</button>
+            <button class='btn btn-danger delete'>Delete</button>
+        </td>
+    </tr>
+</template>
+
+<template name="page">
+    <li><a href="#" class="page_number" id={{page_number}}>{{page_number}}</a></li>
+</template>
+
+<template name="sorting">
+    <div class="sorting">
+        Sort Table (Sortir Tabel):
+        <select class="btn btn-default dropdown-toggle sorting key">
+            <option value="number">Nomor</option> 
+            <option value="name">Nama</option>
+            <option value="nik">NIK</option>
+            <option value="dept">Departemen</option>
+            <option value="pos">Posisi</option>
+        </select>
+        <select class="btn btn-default dropdown-toggle sorting order">
+            <option value="1">Ascending</option> 
+            <option value="-1">Descending</option>
+        </select>
+    </div>
+</template>

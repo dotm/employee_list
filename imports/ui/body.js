@@ -3,7 +3,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { $ } from 'meteor/jquery';
 
 import './body.html';
-import "../vendor/bootstrap/css/bootstrap.min.css";
 import {Employees} from '../api/employees.js';
 
 Template.body.onCreated(function(){

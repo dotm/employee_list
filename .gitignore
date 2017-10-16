@@ -1,2 +1,4 @@
 node_modules/
 imports/vendor/
+imports/dist/
+public/

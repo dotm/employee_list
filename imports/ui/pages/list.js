@@ -3,7 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { $ } from 'meteor/jquery';
 
 import './list.html';
-import {Employees} from '../api/employees.js';
+import {Employees} from '../../api/employees.js';
 
 Template.list.onCreated(function(){
   this.page = new ReactiveVar(1)

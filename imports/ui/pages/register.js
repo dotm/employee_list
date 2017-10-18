@@ -39,6 +39,6 @@ Template.register.events({
         let password = event.target.password.value;
         let passwordConfirmation = event.target.password_confirmation.value;
 
-        console.log([name, email, password].join(" "));
+        console.log([name, email, password]);
     },
 });

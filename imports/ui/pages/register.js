@@ -13,7 +13,7 @@ Template.register.onRendered(function(){
             },
             password: 'required',
             password_confirmation: {
-                equalTo: "password"
+                equalTo: "#password"
             }
           },
           messages: {
@@ -38,14 +38,6 @@ Template.register.events({
         let email = event.target.email.value;
         let password = event.target.password.value;
         let passwordConfirmation = event.target.password_confirmation.value;
-
-        let errorText = ""
-        if(!firstName) {errorText += "First Name can't be empty!\n"}
-        if(!lastName) {errorText += "Last Name can't be empty!\n"}
-        if(!email) {errorText += "Email can't be empty!\n"}
-        if(!password) {errorText += "Password can't be empty!\n"}
-        if(!passwordConfirmation) {errorText += "Please confirm your password.\n"}
-        if(!errorText){alert(errorText)}
 
         console.log([name, email, password].join(" "));
     },

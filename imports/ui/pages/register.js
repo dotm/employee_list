@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './register.html';
 
@@ -39,6 +40,19 @@ Template.register.events({
         let password = event.target.password.value;
         let passwordConfirmation = event.target.password_confirmation.value;
 
-        console.log([name, email, password]);
+        let options = {
+            email: email,
+            password: password,
+            profile: {
+                name: name
+            }
+        }
+        Accounts.createUser(options,function(err){
+            if(err){
+                alert(err.reason)
+            }else{
+                FlowRouter.go('List');
+            }
+        });
     },
 });

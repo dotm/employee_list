@@ -3,6 +3,15 @@ import { Template } from 'meteor/templating';
 import './add.html';
 import {Employees} from '../../api/employees.js';
 
+Template.add.rendered=function() {
+    $('.datepicker').datepicker({
+        format: 'd M yyyy',
+    });
+    $('.date-button').click(function(){
+        $('.datepicker').focus();
+    })
+}
+
 Template.add.events({
     // CREATE: Add new employee
     'submit .new-employee'(event) {
@@ -18,14 +27,17 @@ Template.add.events({
                 return 1;
             }
         }
+        let date = new Date($('.datepicker').val())
         const target = event.target;
         let newEmployee = {
             number: getMaxEmployeeNumber(),
             name: target.name.value,
             nik: target.nik.value,
             dept: target.dept.value,
-            pos: target.pos.value
+            pos: target.pos.value,
+            date: date
         }
+        
         Meteor.call('employees.insert', newEmployee)
 
         // Clear form

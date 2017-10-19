@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { $ } from 'meteor/jquery';
 
+import './employee.js'
 import './list.html';
 import {Employees} from '../../api/employees.js';
 

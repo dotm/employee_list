@@ -32,12 +32,6 @@ Template.add.events({
         
         Meteor.call('employees.insert', newEmployee)
 
-        // Clear form
-        target.name.value = ''
-        target.nik.value = ''
-        target.dept.value = ''
-        target.pos.value = ''
-
         FlowRouter.go('List');
     },
 });

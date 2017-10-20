@@ -1,26 +1,25 @@
 <template name='employee_form'>
     <form>
-        <h3>Add Employee (Tambah Karyawan Baru)</h3>
         <div class="form-group">
             <label for="name">Nama Karyawan</label>
-            <input class="form-control" type="text" name="name" />
+            <input class="form-control" type="text" name="name" value="{{name}}" />
         </div>
         <div class="form-group">
             <label for="nik">Nomor Induk Karyawan</label>
-            <input class="form-control" type="text" name="nik" />
+            <input class="form-control" type="text" name="nik" value="{{nik}}" />
         </div>
         <div class="form-group">
             <label for="dept">Departemen</label>
-            <input class="form-control" type="text" name="dept" />
+            <input class="form-control" type="text" name="dept" value="{{dept}}" />
         </div>
         <div class="form-group">
             <label for="pos">Posisi</label>
-            <input class="form-control" type="text" name="pos" />
+            <input class="form-control" type="text" name="pos" value="{{pos}}" />
         </div>
         <div class="form-group">
             <label for="date">Tanggal Mulai Kerja</label>
             <div class="input-group">
-                <input class="form-control datepicker" type="text" name='date' value="1 Jan 2000">
+                <input class="form-control datepicker" type="text" name='date' value="{{formatDate date}}" />
                 <div class="input-group-addon date-button">
                     <i class="fa fa-calendar"></i>
                 </div>

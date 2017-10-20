@@ -38,74 +38,7 @@ Template.list.helpers({
   }
 });
 
-// Basic CRUD events
 Template.list.events({
-  // CREATE: Add new employee
-  // 'submit .new-employee'(event) {
-  //   // Prevent default browser form submit
-  //   event.preventDefault();
- 
-  //   function getMaxEmployeeNumber(){
-  //     let currentMaxEmployee = Employees.findOne({},{sort:{number: -1}})
-  //     if(currentMaxEmployee !== undefined){
-  //       return currentMaxEmployee.number + 1;
-  //     }else{
-  //       //if no employee exist yet
-  //       return 1;
-  //     }
-  //   }
-  //   const target = event.target;
-  //   let newEmployee = {
-  //     number: getMaxEmployeeNumber(),
-  //     name: target.name.value,
-  //     nik: target.nik.value,
-  //     dept: target.dept.value,
-  //     pos: target.pos.value
-  //   }
-  //   Meteor.call('employees.insert', newEmployee)
-
-  //   // Clear form
-  //   target.name.value = ''
-  //   target.nik.value = ''
-  //   target.dept.value = ''
-  //   target.pos.value = ''
-
-  //   alert("Karyawan berhasil ditambahkan.");
-  // },
-
-  // UPDATE: Edit employee data
-  'click .edit'(){
-    let name = prompt(`Ganti nama dari ${this.name}`, this.name);
-    let nik = prompt(`Ganti NIK dari ${this.name}`, this.nik);
-    let dept = prompt(`Ganti departemen dari ${this.name}`, this.dept);
-    let pos = prompt(`Ganti jabatan dari ${this.name}`, this.pos);
-    
-    let old_data = {
-      Nama: this.name,
-      NIK: this.nik,
-      Departemen: this.dept,
-      Jabatan: this.pos
-    }
-    let new_data = {
-      Nama: name,
-      NIK: nik,
-      Departemen: dept,
-      Jabatan: pos
-    }
-    let answer = confirm(
-      `Ganti Karyawan ini (${this.name})?`
-      + '\n\n' +
-      "Data lama:\n" + JSON.stringify(old_data, null, 4)
-      + '\n\n' +
-      "Data baru:\n" + JSON.stringify(new_data, null, 4)
-    );
-
-    let employeeObj = {name, nik, dept, pos}
-    if(answer){
-      Meteor.call('employees.update', this._id, employeeObj)
-    }
-  },
-
   // DELETE: Delete an employee entry
   'click .delete'(){
     let answer = confirm(`Hapus Karyawan ini (${this.name})?`);

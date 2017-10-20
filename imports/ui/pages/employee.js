@@ -1,6 +1,8 @@
 import { Template } from 'meteor/templating';
 
+import './employee-form.js';
 import './employee.html'
+import {Employees} from '../../api/employees.js';
 
 Template.employee.helpers({
   formatDate(date){
@@ -12,3 +14,22 @@ Template.employee.helpers({
   },
 });
 
+Template.employee.events({
+  // UPDATE: Edit employee data
+  'submit .edit-employee'(event) {
+    // Prevent default browser form submit
+    event.preventDefault();
+    
+    let name = event.target.name.value;
+    let nik = event.target.nik.value;
+    let dept = event.target.dept.value;
+    let pos = event.target.pos.value;
+    let date = new Date(event.target.date.value);
+    let employeeObj = {name, nik, dept, pos, date}
+    
+    Meteor.call('employees.update', this._id, employeeObj)
+
+    //Hide all modals
+    $('.modal').modal('hide')    
+  },
+});

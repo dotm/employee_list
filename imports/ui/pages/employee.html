@@ -9,7 +9,28 @@
             {{formatDate date}}
         </td>
         <td>
-            <button class='btn btn-warning edit'>Edit</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning edit" data-toggle="modal" data-target="#{{_id}}">
+                Edit
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id={{_id}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title">Edit Karyawan</h3>
+                        </div>
+                        <div class="edit-employee modal-body">
+                            {{> employee_form}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <button class='btn btn-danger delete'>Delete</button>
         </td>
     </tr>

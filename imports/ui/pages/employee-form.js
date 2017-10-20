@@ -10,3 +10,13 @@ Template.employee_form.rendered=function() {
         $('.datepicker').focus();
     })
 }
+
+Template.employee_form.helpers({
+  formatDate(date){
+    return date.toLocaleDateString('id',{
+      day:'numeric',
+      month:'short',
+      year:'numeric'
+    });
+  }
+});

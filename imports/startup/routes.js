@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
@@ -18,27 +19,47 @@ FlowRouter.route('/', {
 FlowRouter.route('/register', {
     name: 'Register',
     action() {
-        BlazeLayout.render('register');
+        // if already logged in
+        if(Meteor.user()){
+            FlowRouter.go('App.home');
+        }else{
+            BlazeLayout.render('register');
+        }
     },
 });
 
 FlowRouter.route('/login', {
     name: 'Login',
     action() {
-        BlazeLayout.render('login');
+        // if already logged in
+        if(Meteor.user()){
+            FlowRouter.go('App.home');
+        }else{
+            BlazeLayout.render('login');
+        }
     },
 });
 
 FlowRouter.route('/add', {
     name: 'Add',
     action() {
-        BlazeLayout.render('App_body', { main: 'add' });
+        // if already logged in
+        if(Meteor.user()){
+            BlazeLayout.render('App_body', { main: 'add' });
+        }else{
+            FlowRouter.go('Login');
+        }
     },
 });
 
 FlowRouter.route('/list', {
     name: 'List',
     action() {
-        BlazeLayout.render('App_body', { main: 'list' });
+        // if already logged in
+        if(Meteor.user()){
+            BlazeLayout.render('App_body', { main: 'list' });
+        }else{
+            FlowRouter.go('Login');
+        }
     },
 });

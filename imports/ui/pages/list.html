@@ -5,55 +5,51 @@
                 <h2>Daftar Karyawan</h2>
             </div>
         
-            {{#unless currentUser}}
-                <h3><a href="login">Please login first</a></h3>
-            {{else}}
-                <!-- form for Adding New Employee
-                <form class="new-employee form-inline">
-                    <h3>Add Employee (Tambah Karyawan Baru)</h3>
-                    <input class="form-control" type="text" name="name" placeholder="Nama Karyawan" />
-                    <input class="form-control" type="text" name="nik" placeholder="Nomor Induk Karyawan" />
-                    <input class="form-control" type="text" name="dept" placeholder="Departemen" />
-                    <input class="form-control" type="text" name="pos" placeholder="Posisi" />
-                    <input class="btn btn-default" type="submit">
-                </form>
-                -->
-                <h3>Selamat datang, {{ currentUser.profile.name }}!</h3>
-                <h4>
-                    <a href="add"><i class="fa fa-plus-circle fa-fw"></i> Tambah Karyawan Baru </a>
-                </h4>
-        
-                <h3>Tabel Daftar Karyawan</h3>
-                {{> sorting}}
-                <br/>
-                <table class="table table-hover table-condensed table-bordered employee-list">
-                    <thead class="text-center">
-                        <th>Nomor</th>
-                        <th>Nama</th>
-                        <th>NIK</th>
-                        <th>Departemen</th>
-                        <th>Posisi</th>
-                        <th>Tanggal Mulai Kerja</th>
-                        <th></th>
-                    </thead>
-                    <tbody>
-                        {{#each employees}}
-                            {{> employee}}
-                        {{/each}}
-                    </tbody>
-                </table>
-                
-                <div>
-                    <h4 style="display: inline-block; vertical-align: middle;">Ganti halaman: </h4>
-                    <ul style="display: inline-block; vertical-align: middle;" class="pagination pagination-sm">
-                        {{#each pages}}
-                            {{> page}}
-                        {{/each}}
-                    </ul>
-                </div>
-                
-                <h4>Anda berada di halaman {{current_page}}.</h4>
-            {{/unless}}
+            <!-- form for Adding New Employee
+            <form class="new-employee form-inline">
+                <h3>Add Employee (Tambah Karyawan Baru)</h3>
+                <input class="form-control" type="text" name="name" placeholder="Nama Karyawan" />
+                <input class="form-control" type="text" name="nik" placeholder="Nomor Induk Karyawan" />
+                <input class="form-control" type="text" name="dept" placeholder="Departemen" />
+                <input class="form-control" type="text" name="pos" placeholder="Posisi" />
+                <input class="btn btn-default" type="submit">
+            </form>
+            -->
+            <h3>Selamat datang, {{ currentUser.profile.name }}!</h3>
+            <h4>
+                <a href="add"><i class="fa fa-plus-circle fa-fw"></i> Tambah Karyawan Baru </a>
+            </h4>
+    
+            <h3>Tabel Daftar Karyawan</h3>
+            {{> sorting}}
+            <br/>
+            <table class="table table-hover table-condensed table-bordered employee-list">
+                <thead class="text-center">
+                    <th>Nomor</th>
+                    <th>Nama</th>
+                    <th>NIK</th>
+                    <th>Departemen</th>
+                    <th>Posisi</th>
+                    <th>Tanggal Mulai Kerja</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {{#each employees}}
+                        {{> employee}}
+                    {{/each}}
+                </tbody>
+            </table>
+            
+            <div>
+                <h4 style="display: inline-block; vertical-align: middle;">Ganti halaman: </h4>
+                <ul style="display: inline-block; vertical-align: middle;" class="pagination pagination-sm">
+                    {{#each pages}}
+                        {{> page}}
+                    {{/each}}
+                </ul>
+            </div>
+            
+            <h4>Anda berada di halaman {{current_page}}.</h4>
         </div>
     </div>
 </template>

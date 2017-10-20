@@ -1,49 +1,45 @@
 <template name='list'>
     <div id="page-wrapper">
         <div class="col-md-12">
-            {{#unless currentUser }}
-                <h3><a href="login" >Please Login First.</a></h3>
-            {{else}}
-                <div class="text-center">
-                    <h2>Daftar Karyawan</h2>
-                </div>
-            
-                <h3>Selamat datang, {{ currentUser.profile.name }}!</h3>
-                <h4>
-                    <a href="add"><i class="fa fa-plus-circle fa-fw"></i> Tambah Karyawan Baru </a>
-                </h4>
+            <div class="text-center">
+                <h2>Daftar Karyawan</h2>
+            </div>
         
-                <h3>Tabel Daftar Karyawan</h3>
-                {{> sorting}}
-                <br/>
-                <table class="table table-hover table-condensed table-bordered employee-list">
-                    <thead class="text-center">
-                        <th>Nomor</th>
-                        <th>Nama</th>
-                        <th>NIK</th>
-                        <th>Departemen</th>
-                        <th>Posisi</th>
-                        <th>Tanggal Mulai Kerja</th>
-                        <th></th>
-                    </thead>
-                    <tbody>
-                        {{#each employees}}
-                            {{> employee}}
-                        {{/each}}
-                    </tbody>
-                </table>
-                
-                <div>
-                    <h4 style="display: inline-block; vertical-align: middle;">Ganti halaman: </h4>
-                    <ul style="display: inline-block; vertical-align: middle;" class="pagination pagination-sm">
-                        {{#each pages}}
-                            {{> page}}
-                        {{/each}}
-                    </ul>
-                </div>
-                
-                <h4>Anda berada di halaman {{current_page}}.</h4>
-            {{/unless}}
+            <h3>Selamat datang, {{ currentUser.profile.name }}!</h3>
+            <h4>
+                <a href="add"><i class="fa fa-plus-circle fa-fw"></i> Tambah Karyawan Baru </a>
+            </h4>
+    
+            <h3>Tabel Daftar Karyawan</h3>
+            {{> sorting}}
+            <br/>
+            <table class="table table-hover table-condensed table-bordered employee-list">
+                <thead class="text-center">
+                    <th>Nomor</th>
+                    <th>Nama</th>
+                    <th>NIK</th>
+                    <th>Departemen</th>
+                    <th>Posisi</th>
+                    <th>Tanggal Mulai Kerja</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {{#each employees}}
+                        {{> employee}}
+                    {{/each}}
+                </tbody>
+            </table>
+            
+            <div>
+                <h4 style="display: inline-block; vertical-align: middle;">Ganti halaman: </h4>
+                <ul style="display: inline-block; vertical-align: middle;" class="pagination pagination-sm">
+                    {{#each pages}}
+                        {{> page}}
+                    {{/each}}
+                </ul>
+            </div>
+            
+            <h4>Anda berada di halaman {{current_page}}.</h4>
         </div>
     </div>
 </template>

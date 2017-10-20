@@ -18,7 +18,12 @@ FlowRouter.route('/', {
 FlowRouter.route('/home', {
     name: 'App.home',
     action() {
-        BlazeLayout.render('App_body', { main: 'blank' });
+        // if logged in
+        if(Meteor.userId()){
+            BlazeLayout.render('App_body', { main: 'blank' });
+        }else{
+            FlowRouter.go('Login');
+        }
     },
 });
 
@@ -39,13 +44,23 @@ FlowRouter.route('/login', {
 FlowRouter.route('/add', {
     name: 'Add',
     action() {
-        BlazeLayout.render('App_body', { main: 'add' });
+        // if logged in
+        if(Meteor.userId()){
+            BlazeLayout.render('App_body', { main: 'add' });
+        }else{
+            FlowRouter.go('Login');
+        }
     },
 });
 
 FlowRouter.route('/list', {
     name: 'List',
     action() {
-        BlazeLayout.render('App_body', { main: 'list' });
+        // if logged in
+        if(Meteor.userId()){
+            BlazeLayout.render('App_body', { main: 'list' });
+        }else{
+            FlowRouter.go('Login');
+        }
     },
 });

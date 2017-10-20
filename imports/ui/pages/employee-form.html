@@ -19,7 +19,11 @@
         <div class="form-group">
             <label for="date">Tanggal Mulai Kerja</label>
             <div class="input-group">
-                <input class="form-control datepicker" type="text" name='date' value="{{formatDate date}}" />
+                {{#if date}}
+                    <input class="form-control datepicker" type="text" name='date' readonly="readonly" value={{formatDate date}} />
+                {{else}}
+                    <input class="form-control datepicker" type="text" name='date' readonly="readonly" placeholder="Click here to insert date" />
+                {{/if}}
                 <div class="input-group-addon date-button">
                     <i class="fa fa-calendar"></i>
                 </div>

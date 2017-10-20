@@ -6,7 +6,7 @@ import {Employees} from '../../api/employees.js';
 
 Template.employee.helpers({
   formatDate(date){
-    return date.toLocaleDateString('id',{
+    return date.toLocaleDateString('en',{
       day:'numeric',
       month:'short',
       year:'numeric'

@@ -4,6 +4,7 @@ import "../imports/vendor/bootstrap/css/bootstrap.min.css";
 import "../imports/vendor/metisMenu/metisMenu.min.css";
 import "../imports/dist/css/sb-admin-2.css";
 import "../imports/vendor/font-awesome/css/font-awesome.min.css";
+import "./main.css";
 
 import '../imports/startup/routes.js';
 

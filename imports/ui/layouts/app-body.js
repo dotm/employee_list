@@ -8,18 +8,18 @@ Template.App_body.events({
     'click .logout': function(event){
         event.preventDefault();
         Meteor.logout();
-        FlowRouter.go('App.home');
+        FlowRouter.go('/');
     },
-    'click a[href=login], a.login': function(event){
-        if(Meteor.user()){
-            event.preventDefault();
-            alert("You are already logged in.")
-        }
-    },
-    'click a[href=register], a.register': function(event){
-        if(Meteor.user()){
-            event.preventDefault();
-            alert("Please log out first.")
-        }
-    }
+    // 'click a[href=login], a.login': function(event){
+    //     if(Meteor.user()){
+    //         event.preventDefault();
+    //         alert("You are already logged in.")
+    //     }
+    // },
+    // 'click a[href=register], a.register': function(event){
+    //     if(Meteor.user()){
+    //         event.preventDefault();
+    //         alert("Please log out first.")
+    //     }
+    // }
 });

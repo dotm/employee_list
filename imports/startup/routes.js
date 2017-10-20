@@ -10,6 +10,12 @@ import "../ui/pages/list.js";
 import "../ui/pages/add.js";
 
 FlowRouter.route('/', {
+    action() {
+        FlowRouter.go('Login');
+    },
+});
+
+FlowRouter.route('/home', {
     name: 'App.home',
     action() {
         BlazeLayout.render('App_body', { main: 'blank' });
@@ -19,24 +25,14 @@ FlowRouter.route('/', {
 FlowRouter.route('/register', {
     name: 'Register',
     action() {
-        // if already logged in
-        if(Meteor.user()){
-            FlowRouter.go('App.home');
-        }else{
-            BlazeLayout.render('register');
-        }
+        BlazeLayout.render('register');
     },
 });
 
 FlowRouter.route('/login', {
     name: 'Login',
     action() {
-        // if already logged in
-        if(Meteor.user()){
-            FlowRouter.go('App.home');
-        }else{
-            BlazeLayout.render('login');
-        }
+        BlazeLayout.render('login');
     },
 });
 

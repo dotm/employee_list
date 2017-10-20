@@ -43,23 +43,13 @@ FlowRouter.route('/login', {
 FlowRouter.route('/add', {
     name: 'Add',
     action() {
-        // if already logged in
-        if(Meteor.user()){
-            BlazeLayout.render('App_body', { main: 'add' });
-        }else{
-            FlowRouter.go('Login');
-        }
+        BlazeLayout.render('App_body', { main: 'add' });
     },
 });
 
 FlowRouter.route('/list', {
     name: 'List',
     action() {
-        // if already logged in
-        if(Meteor.user()){
-            BlazeLayout.render('App_body', { main: 'list' });
-        }else{
-            FlowRouter.go('Login');
-        }
+        BlazeLayout.render('App_body', { main: 'list' });
     },
 });

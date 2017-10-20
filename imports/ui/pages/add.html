@@ -1,33 +1,7 @@
 <template name='add'>
     <div id="page-wrapper">
-        <form class="new-employee col-md-6">
-            <h3>Add Employee (Tambah Karyawan Baru)</h3>
-            <div class="form-group">
-                <label for="name">Nama Karyawan</label>
-                <input class="form-control" type="text" name="name" />
-            </div>
-            <div class="form-group">
-                <label for="nik">Nomor Induk Karyawan</label>
-                <input class="form-control" type="text" name="nik" />
-            </div>
-            <div class="form-group">
-                <label for="dept">Departemen</label>
-                <input class="form-control" type="text" name="dept" />
-            </div>
-            <div class="form-group">
-                <label for="pos">Posisi</label>
-                <input class="form-control" type="text" name="pos" />
-            </div>
-            <div class="form-group">
-                <label for="date">Tanggal Mulai Kerja</label>
-                <div class="input-group">
-                    <input class="form-control datepicker" type="text" name='date' value="1 Jan 2000">
-                    <div class="input-group-addon date-button">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-                </div>
-            </div>
-            <input class="btn btn-primary" type="submit">
-        </form>
+        <div class="new-employee col-md-6">
+            {{> employee_form}}
+        </div>
     </div>
 </template>

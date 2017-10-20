@@ -55,7 +55,7 @@ Template.register.events({
                 $('input[type=submit]').val('Register');
                 alert(err.reason);
             }else{
-                FlowRouter.go('List');
+                FlowRouter.go('App.home');
             }
         });
     },

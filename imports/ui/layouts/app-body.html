@@ -17,7 +17,13 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>
+                        {{#if currentUser}}
+                            {{ currentUser.profile.name }}
+                        {{else}}
+                            Please Login, Guest.
+                        {{/if}}
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
@@ -41,16 +47,32 @@
                             <a href="/"><i class="fa fa-home fa-fw"></i> Home </a>
                         </li>
                         <li>
+                            {{#if currentUser}}
+                            <a href="/">Login Page</a>
+                            {{else}}
                             <a href="login">Login Page</a>
+                            {{/if}}
                         </li>
                         <li>
+                            {{#if currentUser}}
+                            <a href="/">Register</a>
+                            {{else}}
                             <a href="register">Register</a>
+                            {{/if}}
                         </li>
                         <li>
+                            {{#if currentUser}}
                             <a href="add">Tambah Karyawan</a>
+                            {{else}}
+                            <a href="login">Tambah Karyawan</a>
+                            {{/if}}
                         </li>
                         <li>
+                            {{#if currentUser}}
                             <a href="list">Daftar Karyawan</a>
+                            {{else}}
+                            <a href="login">Daftar Karyawan</a>
+                            {{/if}}
                         </li>
                     </ul>
                 </div>

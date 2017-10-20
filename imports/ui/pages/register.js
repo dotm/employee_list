@@ -47,9 +47,13 @@ Template.register.events({
                 name: name
             }
         }
+
+        $('input[type=submit]').val('Please Wait');
+
         Accounts.createUser(options,function(err){
             if(err){
-                alert(err.reason)
+                $('input[type=submit]').val('Register');
+                alert(err.reason);
             }else{
                 FlowRouter.go('List');
             }

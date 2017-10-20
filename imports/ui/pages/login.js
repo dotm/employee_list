@@ -28,10 +28,13 @@ Template.login.events({
         event.preventDefault();
         let email = event.target.email.value;
         let password = event.target.password.value;
+        
+        $('input[type=submit]').val('Please Wait');
 
         Meteor.loginWithPassword(email, password, function(err){
             if(err){
-                alert(err.reason)
+                $('input[type=submit]').val('Login');
+                alert(err.reason);
             }else{
                 FlowRouter.go('List');
             }

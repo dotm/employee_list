@@ -1,25 +1,36 @@
 import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import { Session } from 'meteor/session'
 
 import './employee.js'
 import './list.html';
 import {Employees} from '../../api/employees.js';
 
 Template.list.onCreated(function(){
-  this.page = new ReactiveVar(1)
-  this.keyForSorting = new ReactiveVar('number')
-  this.orderForSorting = new ReactiveVar(1)
+  Session.set({
+    page: 1,
+    keyForSorting: 'name',
+    // 1 is ASC, -1 DESC
+    orderForSorting: 1
+  });
   Meteor.subscribe('employees')
 });
 
 let employeesPerPage = 5
+Template.employee.onRendered(function(){
+  let page = Session.get('page')
+  let firstListNumber = ((page - 1) * employeesPerPage) + 1
+  $('.number').each(function(id,element){
+    $(element).html(firstListNumber + id)
+  })
+});
+
 Template.list.helpers({
   employees(){
-    let keyForSorting = Template.instance().keyForSorting.get()
-    let orderForSorting = Template.instance().orderForSorting.get()
+    let keyForSorting = Session.get('keyForSorting');
+    let orderForSorting = Session.get('orderForSorting');
     return Employees.find({},{
       sort: {[keyForSorting]: orderForSorting},
-      skip: ((Template.instance().page.get() - 1) * employeesPerPage),
+      skip: ((Session.get('page') - 1) * employeesPerPage),
       limit: employeesPerPage,
     });
   },
@@ -34,7 +45,7 @@ Template.list.helpers({
     return array;
   },
   current_page(){
-    return Template.instance().page.get()
+    return Session.get('page');
   }
 });
 
@@ -51,7 +62,7 @@ Template.list.events({
   'click .page_number'(event, instance){
     // Prevent default browser hyperlink click
     event.preventDefault();
-    instance.page.set(parseInt(event.target.id))
+    Session.set({page: parseInt(event.target.id)})
   },
 });
 
@@ -59,10 +70,10 @@ Template.list.events({
 Template.list.events({
   'change .sorting.key'(event, instance){
     let key = $(event.target).val()
-    instance.keyForSorting.set(key)
+    Session.set({keyForSorting: key})
   },
   'change .sorting.order'(event, instance){
     let order = $(event.target).val()
-    instance.orderForSorting.set(order)
+    Session.set({orderForSorting: order})
   },
 });

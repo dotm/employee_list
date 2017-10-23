@@ -29,8 +29,8 @@ Template.employee.events({
     
     Meteor.call('employees.update', this._id, employeeObj)
 
-    //Hide all modals
     $('.modal').modal('hide')
+    $('.modal-backdrop').remove()
   },
   // DELETE: Delete an employee entry
   'click .delete'(){

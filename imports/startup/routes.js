@@ -8,10 +8,16 @@ import "../ui/pages/register.js";
 import "../ui/pages/login.js";
 import "../ui/pages/list.js";
 import "../ui/pages/add.js";
+import "../ui/pages/404.js";
 
 FlowRouter.route('/', {
     action() {
-        FlowRouter.go('Login');
+        // if logged in
+        if(Meteor.userId()){
+            FlowRouter.go('App.home');
+        }else{
+            FlowRouter.go('Login');
+        }
     },
 });
 
@@ -30,14 +36,24 @@ FlowRouter.route('/home', {
 FlowRouter.route('/register', {
     name: 'Register',
     action() {
-        BlazeLayout.render('register');
+        // if logged in
+        if(Meteor.userId()){
+            FlowRouter.go('App.home');
+        }else{
+            BlazeLayout.render('register');
+        }
     },
 });
 
 FlowRouter.route('/login', {
     name: 'Login',
     action() {
-        BlazeLayout.render('login');
+        // if logged in
+        if(Meteor.userId()){
+            FlowRouter.go('App.home');
+        }else{
+            BlazeLayout.render('login');
+        }
     },
 });
 
@@ -62,5 +78,13 @@ FlowRouter.route('/list', {
         }else{
             FlowRouter.go('Login');
         }
+    },
+});
+
+// Handle 404
+FlowRouter.route('/:unknown', {
+    name: '404',
+    action() {
+        BlazeLayout.render('404');
     },
 });

@@ -49,14 +49,6 @@ Template.list.helpers({
   }
 });
 
-Template.list.events({
-  // DELETE: Delete an employee entry
-  'click .delete'(){
-    let answer = confirm(`Hapus Karyawan ini (${this.name})?`);
-    if(answer){Meteor.call('employees.remove', this._id)}
-  },
-});
-
 // Event for changing page number
 Template.list.events({
   'click .page_number'(event, instance){

@@ -32,4 +32,9 @@ Template.employee.events({
     //Hide all modals
     $('.modal').modal('hide')    
   },
+  // DELETE: Delete an employee entry
+  'click .delete'(){
+    let answer = confirm(`Hapus Karyawan ini (${this.name})?`);
+    if(answer){Meteor.call('employees.remove', this._id)}
+  },
 });

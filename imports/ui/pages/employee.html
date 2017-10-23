@@ -31,7 +31,30 @@
                     </div>
                 </div>
             </div>
-            <button class='btn btn-danger delete'>Delete</button>
+            
+            <!-- Button trigger modal for delete-->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_{{_id}}">
+                Delete
+            </button>
+
+            <!-- Modal for delete -->
+            <div class="modal fade" id="delete_{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title">Hapus Karyawan</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Hapus {{name}}?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="button" class="btn btn-danger delete" data-dismiss="modal">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </td>
     </tr>
 </template>

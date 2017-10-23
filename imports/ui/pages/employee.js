@@ -30,11 +30,13 @@ Template.employee.events({
     Meteor.call('employees.update', this._id, employeeObj)
 
     //Hide all modals
-    $('.modal').modal('hide')    
+    $('.modal').modal('hide')
   },
   // DELETE: Delete an employee entry
   'click .delete'(){
-    let answer = confirm(`Hapus Karyawan ini (${this.name})?`);
-    if(answer){Meteor.call('employees.remove', this._id)}
+    Meteor.call('employees.remove', this._id)
+
+    $('.modal').modal('hide')
+    $('.modal-backdrop').remove()
   },
 });

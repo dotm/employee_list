@@ -3,8 +3,12 @@ import { Template } from 'meteor/templating';
 import './employee-form.js';
 import './employee.html'
 import {Employees} from '../../api/employees.js';
+import {Images} from '../../api/images.js';
 
 Template.employee.helpers({
+  image(){
+    return Images.find(this.imageID)
+  },
   formatDate(date){
     return date.toLocaleDateString('en',{
       day:'numeric',

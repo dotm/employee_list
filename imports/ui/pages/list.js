@@ -13,6 +13,7 @@ Template.list.onCreated(function(){
     orderForSorting: 1
   });
   Meteor.subscribe('employees')
+  Meteor.subscribe('images')
 });
 
 let employeesPerPage = 5

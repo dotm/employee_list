@@ -1,7 +1,11 @@
 <template name="employee">
     <tr>
         <td class="number">{{number}}</td>
-        <td class="text-center"><img src="https://developers.google.com/site-assets/logo-github.svg"></td>
+        <td class="text-center">
+            {{#each image}}
+            <img src="{{this.url}}">
+            {{/each}}
+        </td>
         <td>{{name}}</td>
         <td>{{nik}}</td>
         <td>{{dept}}</td>

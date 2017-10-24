@@ -82,9 +82,8 @@ FlowRouter.route('/list', {
 });
 
 // Handle 404
-FlowRouter.route('/:unknown', {
-    name: '404',
+FlowRouter.notFound = {
     action() {
         BlazeLayout.render('404');
-    },
-});
+    },    
+};

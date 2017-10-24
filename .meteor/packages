@@ -25,3 +25,5 @@ kadira:blaze-layout
 themeteorchef:jquery-validation
 rajit:bootstrap3-datepicker
 session
+cfs:standard-packages
+cfs:gridfs

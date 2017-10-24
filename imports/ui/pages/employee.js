@@ -31,14 +31,33 @@ Template.employee.events({
     let date = new Date(event.target.date.value);
     let employeeObj = {name, nik, dept, pos, date}
     
-    Meteor.call('employees.update', this._id, employeeObj)
+    let employeeID = this._id
+    let oldImageID = this.imageID
+    let user_upload_an_image = !!$('#fileInput')[0].files[0]
+    if(user_upload_an_image){
+      // delete old image
+      Images.remove(oldImageID)
+      // store new image
+      Images.insert($('#fileInput')[0].files[0], function(err,fileObj){
+        // and retrieve it's ID (to be stored in employee obj)
+        employeeObj.imageID = fileObj._id
+        Meteor.call('employees.update', employeeID, employeeObj)
+      })
+    }else{
+      Meteor.call('employees.update', employeeID, employeeObj)
+    }
 
     $('.modal').modal('hide')
     $('.modal-backdrop').remove()
   },
   // DELETE: Delete an employee entry
   'click .delete'(){
-    Meteor.call('employees.remove', this._id)
+    let employeeID = this._id
+    let imageID = this.imageID
+    // delete image associated with employee
+    Images.remove(imageID)
+    // delete employee
+    Meteor.call('employees.remove', employeeID)
 
     $('.modal').modal('hide')
     $('.modal-backdrop').remove()

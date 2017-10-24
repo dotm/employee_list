@@ -22,7 +22,7 @@ Meteor.methods({
     },
     'employees.update'(employeeID, employeeObj){
         Employees.update(
-            {_id: employeeID},
+            employeeID,
             {$set: employeeObj}
         )
     },

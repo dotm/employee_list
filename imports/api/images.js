@@ -18,6 +18,10 @@ if (Meteor.isServer) {
         'download': function () {
             // add custom authentication code here
             return true;
+        },
+        'remove': function () {
+            // add custom authentication code here
+            return true;
         }
     });
     

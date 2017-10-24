@@ -2,7 +2,16 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check'
 
-export const Employees = new Mongo.Collection('employees');
+import {Images} from './images.js';
+
+class EmployeesCollection extends Mongo.Collection{
+    remove(selector, callback) {
+        let imageID = this.find(selector).fetch()[0].imageID
+        if(imageID){Images.remove(imageID)}
+        return super.remove(selector, callback);
+    }
+}
+export const Employees = new EmployeesCollection('employees');
 
 if (Meteor.isServer) {
     // This code only runs on the server

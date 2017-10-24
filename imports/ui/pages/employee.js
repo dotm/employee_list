@@ -53,10 +53,7 @@ Template.employee.events({
   // DELETE: Delete an employee entry
   'click .delete'(){
     let employeeID = this._id
-    let imageID = this.imageID
-    // delete image associated with employee
-    Images.remove(imageID)
-    // delete employee
+    // delete employee (this also delete associated image; look for hook on Employees api)
     Meteor.call('employees.remove', employeeID)
 
     $('.modal').modal('hide')

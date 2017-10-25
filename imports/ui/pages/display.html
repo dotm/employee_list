@@ -11,6 +11,39 @@
             </h4>
     
             <h3>Daftar Semua Karyawan</h3>
+            {{#each employees}}
+                {{> employeeDiv}}
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name='employeeDiv'>
+    <div class="panel panel-default">
+        <div class="panel-heading">{{name}}</div>            
+        <div class="panel-body row">
+            <div class="col-md-2">
+                <!-- Replace this default image with employee's image -->
+                <img width="100px" height="100px" style="background-color:black">
+            </div>
+            <div class="list-group col-md-8">
+                <button class="row list-group-item">
+                    <div class="col-md-4">NIK</div>
+                    <div class="col-md-8">: {{nik}}</div>
+                </button>
+                <button class="row list-group-item">
+                    <div class="col-md-4">Departemen</div>
+                    <div class="col-md-8">: {{dept}}</div>
+                </button>
+                <button class="row list-group-item">
+                    <div class="col-md-4">Posisi</div>
+                    <div class="col-md-8">: {{pos}}</div>
+                </button>
+                <button class="row list-group-item">
+                    <div class="col-md-4">Tanggal Mulai Kerja</div>
+                    <div class="col-md-8">: {{formatDate date}}</div>
+                </button>
+            </div>
         </div>
     </div>
 </template>

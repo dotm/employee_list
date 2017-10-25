@@ -1,7 +1,17 @@
-let imageStore = new FS.Store.GridFS("images")
+let imageStore = new FS.Store.GridFS("images", {
+    transformWrite: function(fileObj, readStream, writeStream) {
+        // Transform the image into a 100x100px thumbnail
+        gm(readStream, fileObj.name()).resize('100', '100').stream().pipe(writeStream);
+    }
+})
 
 export const Images = new FS.Collection("images",{
     stores: [imageStore],
+    filter: {
+        allow: {
+            contentTypes: ['image/*'] //allow only images in this FS.Collection
+        }
+    }
 })
 
 if (Meteor.isServer) {

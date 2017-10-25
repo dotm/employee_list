@@ -7,6 +7,7 @@ import "../ui/pages/blank.js";
 import "../ui/pages/register.js";
 import "../ui/pages/login.js";
 import "../ui/pages/list.js";
+import "../ui/pages/display.js";
 import "../ui/pages/add.js";
 import "../ui/pages/404.js";
 
@@ -75,6 +76,18 @@ FlowRouter.route('/list', {
         // if logged in
         if(Meteor.userId()){
             BlazeLayout.render('App_body', { main: 'list' });
+        }else{
+            FlowRouter.go('Login');
+        }
+    },
+});
+
+FlowRouter.route('/display', {
+    name: 'Display',
+    action() {
+        // if logged in
+        if(Meteor.userId()){
+            BlazeLayout.render('App_body', { main: 'display' });
         }else{
             FlowRouter.go('Login');
         }

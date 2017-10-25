@@ -60,6 +60,13 @@
                             <a href="login">Daftar Karyawan</a>
                             {{/if}}
                         </li>
+                        <li>
+                            {{#if currentUser}}
+                            <a href="display">Lihat Semua Karyawan</a>
+                            {{else}}
+                            <a href="login">Lihat Semua Karyawan</a>
+                            {{/if}}
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

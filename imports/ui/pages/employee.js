@@ -48,6 +48,7 @@ Template.employee.events({
     }
 
     $('.modal').modal('hide')
+    $('body').removeClass('modal-open');
     $('.modal-backdrop').remove()
   },
   // DELETE: Delete an employee entry
@@ -57,6 +58,7 @@ Template.employee.events({
     Meteor.call('employees.remove', employeeID)
 
     $('.modal').modal('hide')
+    $('body').removeClass('modal-open');
     $('.modal-backdrop').remove()
   },
 });

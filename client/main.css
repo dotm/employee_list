@@ -1,2 +1,3 @@
 /* CSS declarations go here */
-label.error {color:red;}
+body {background-color: white !important;}
+label.error {color: red;}

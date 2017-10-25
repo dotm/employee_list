@@ -14,13 +14,16 @@
             {{#each employees}}
                 {{> employeeDiv}}
             {{/each}}
+            <div class="well text-center">
+                <p><i class="fa load-animate fa-spinner" aria-hidden="true"></i> Loading more employees..</p>
+            </div>
         </div>
     </div>
 </template>
 
 <template name='employeeDiv'>
     <div class="panel panel-default">
-        <div class="panel-heading">{{name}}</div>            
+        <div class="panel-heading"><h4>{{name}}</h4></div>            
         <div class="panel-body row">
             <div class="col-md-2">
                 <!-- Replace this default image with employee's image -->

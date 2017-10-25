@@ -6,35 +6,35 @@ let seeder = function seeder(Collection){
 
     let docs = [
         {
-            "name": "B",
+            "name": "Boris Vane",
             "nik": "31",
             "dept": "Finance",
             "pos": "Karyawan",
             "date": new Date("Nov 01 2017")
         },
         {
-            "name": "A",
+            "name": "Arkhim Shak",
             "nik": "97",
             "dept": "Marketing",
             "pos": "Karyawan",
             "date": new Date("Nov 11 2017")
         },
         {
-            "name": "X",
+            "name": "Xeno Brixat",
             "nik": "021",
             "dept": "Finance",
             "pos": "CFO",
             "date": new Date("Nov 21 2017")
         },
         {
-            "name": "C",
+            "name": "Charle Fourier",
             "nik": "896",
             "dept": "Marketing",
             "pos": "Manager",
             "date": new Date("Nov 21 2016")
         },
         {
-            "name": "Aa",
+            "name": "Aad Faruq",
             "nik": "051",
             "dept": "Operation",
             "pos": "Karyawan",
@@ -42,35 +42,35 @@ let seeder = function seeder(Collection){
         },
     
         {
-            "name": "Ja",
+            "name": "Jaras Burnak",
             "nik": "541",
             "dept": "Operation",
             "pos": "Manager",
             "date": new Date("Nov 26 2017")
         },
         {
-            "name": "Ab",
+            "name": "Abu Bakar",
             "nik": "9651",
             "dept": "IT",
             "pos": "Karyawan",
             "date": new Date("Nov 16 2017")
         },
         {
-            "name": "Z",
+            "name": "Zuriel Virgil",
             "nik": "551",
             "dept": "IT",
             "pos": "Manager",
             "date": new Date("Oct 16 2015")
         },
         {
-            "name": "Y",
+            "name": "Yoshua Elmaryono",
             "nik": "0981",
             "dept": "IT",
-            "pos": "Manager",
+            "pos": "Karyawan",
             "date": new Date("Oct 26 2015")
         },
         {
-            "name": "La",
+            "name": "Lariette Marion",
             "nik": "9765",
             "dept": "IT",
             "pos": "CIO",
@@ -78,35 +78,35 @@ let seeder = function seeder(Collection){
         },
     
         {
-            "name": "Yo",
+            "name": "Yarim Kezima",
             "nik": "2654",
             "dept": "IT",
             "pos": "CTO",
             "date": new Date("Oct 26 2016")
         },
         {
-            "name": "E",
+            "name": "Evan Angelo",
             "nik": "943",
             "dept": "Finance",
             "pos": "CFO",
             "date": new Date("Oct 26 2017")
         },
         {
-            "name": "Ra",
+            "name": "Rani Sita",
             "nik": "39378",
             "dept": "Marketing",
             "pos": "Karyawan",
             "date": new Date("Oct 26 2017")
         },
         {
-            "name": "Fe",
+            "name": "Fe Misfa",
             "nik": "9376",
             "dept": "Marketing",
             "pos": "Karyawan",
             "date": new Date("Oct 26 2016")
         },
         {
-            "name": "Ve",
+            "name": "Ve Misva",
             "nik": "9377",
             "dept": "Marketing",
             "pos": "Karyawan",
@@ -114,14 +114,14 @@ let seeder = function seeder(Collection){
         },
 
         {
-            "name": "Kk",
+            "name": "Kiki Titu",
             "nik": "0057",
             "dept": "IT",
             "pos": "Karyawan",
             "date": new Date("Oct 16 2016")
         },
         {
-            "name": "Dd",
+            "name": "Dedi Karim",
             "nik": "0059",
             "dept": "IT",
             "pos": "Karyawan",

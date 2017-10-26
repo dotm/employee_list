@@ -30,19 +30,22 @@ Template.display.onCreated(function(){
     });
     
     $(window).scroll(function(event){
-        if(elementInView('#load-more')){
-            // check if there's more employee to load
-            let totalEmployee = Employees.find().count()
-            let unloadedEmployee = totalEmployee - Session.get('loadedEmployee')
-            if(unloadedEmployee > 0){
-                // if there's more employees to load, load them
-                Session.set({
-                    loadedEmployee: Session.get('loadedEmployee') + Session.get('limitEmployeeLoaded')
-                })
-            } else {
-                // when there's no more to load, remove the sentinel element and the scroll event handler
-                $(window).off('scroll');
-                $('#load-more').remove();
+        // only run this if there's a lazy-load class in HTML
+        if($('.lazy-load')[0]){
+            if(elementInView('#load-more')){
+                // check if there's more employee to load
+                let totalEmployee = Employees.find().count()
+                let unloadedEmployee = totalEmployee - Session.get('loadedEmployee')
+                if(unloadedEmployee > 0){
+                    // if there's more employees to load, load them
+                    Session.set({
+                        loadedEmployee: Session.get('loadedEmployee') + Session.get('limitEmployeeLoaded')
+                    })
+                } else {
+                    // when there's no more to load, remove the sentinel element and the scroll event handler
+                    $(window).off('scroll');
+                    $('#load-more').remove();
+                }
             }
         }
     })

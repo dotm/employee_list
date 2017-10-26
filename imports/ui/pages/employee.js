@@ -33,12 +33,14 @@ Template.employee.events({
     
     let employeeID = this._id
     let oldImageID = this.imageID
-    let user_upload_an_image = !!$('#fileInput')[0].files[0]
+    let fileInputID = "#" + employeeID + " " + "#fileInput"
+    let uploadedImage = $(fileInputID)[0].files[0]  // this will be undefined if no file uploaded
+    let user_upload_an_image = !!uploadedImage
     if(user_upload_an_image){
       // delete old image
       Images.remove(oldImageID)
       // store new image
-      Images.insert($('#fileInput')[0].files[0], function(err,fileObj){
+      Images.insert(uploadedImage, function(err,fileObj){
         // and retrieve it's ID (to be stored in employee obj)
         employeeObj.imageID = fileObj._id
         Meteor.call('employees.update', employeeID, employeeObj)

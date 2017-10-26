@@ -5,5 +5,5 @@ import seeder from '../imports/startup/seeder.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
-  seeder(Employees)
+  // seeder(Employees)
 });

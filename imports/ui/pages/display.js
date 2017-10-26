@@ -3,6 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var'
 
 import './display.html';
 import {Employees} from '../../api/employees.js';
+import {Images} from '../../api/images.js';
 
 Template.display.onCreated(function(){
     Meteor.subscribe('employees')
@@ -62,5 +63,8 @@ Template.employeeDiv.helpers({
             month:'short',
             year:'numeric'
         });
+    },
+    image(){
+        return Images.find(this.imageID)
     },
 })

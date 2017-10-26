@@ -25,9 +25,11 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h4>{{name}}</h4></div>            
         <div class="panel-body row">
-            <div class="col-md-2">
+            <div class="col-md-2 text-center">
                 <!-- Replace this default image with employee's image -->
-                <img width="100px" height="100px" style="background-color:black">
+                {{#each image}}
+                <img src="{{this.url}}">
+                {{/each}}
             </div>
             <div class="list-group col-md-8">
                 <button class="row list-group-item">

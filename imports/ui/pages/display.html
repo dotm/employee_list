@@ -31,7 +31,7 @@
             <div class="col-md-2 text-center">
                 <!-- Replace this default image with employee's image -->
                 {{#each image}}
-                <img src="{{this.url}}">
+                <a href="{{getImageURL this.url}}" target="_blank"><img src="{{this.url}}"></a>
                 {{/each}}
             </div>
             <div class="list-group col-md-8">

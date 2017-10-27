@@ -60,6 +60,10 @@ Template.display.helpers({
 })
 
 Template.employeeDiv.helpers({
+    getImageURL(url_string){
+        let url_without_params = url_string.split('?')[0]
+        return url_without_params
+    },
     formatDate(date){
         return date.toLocaleDateString('en',{
             day:'numeric',

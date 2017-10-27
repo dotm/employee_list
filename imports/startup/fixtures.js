@@ -26,7 +26,7 @@ Meteor.startup(() => {
         },
         {
             "name": "Xeno Brixat",
-            "nik": "021",
+            "nik": "321",
             "dept": "Finance",
             "pos": "CFO",
             "date": new Date("Nov 21 2017")
@@ -40,7 +40,7 @@ Meteor.startup(() => {
         },
         {
             "name": "Aad Faruq",
-            "nik": "051",
+            "nik": "751",
             "dept": "Operation",
             "pos": "Karyawan",
             "date": new Date("Nov 06 2017")
@@ -69,7 +69,7 @@ Meteor.startup(() => {
         },
         {
             "name": "Yoshua Elmaryono",
-            "nik": "0981",
+            "nik": "2981",
             "dept": "IT",
             "pos": "Karyawan",
             "date": new Date("Oct 26 2015")
@@ -120,14 +120,14 @@ Meteor.startup(() => {
     
         {
             "name": "Kiki Titu",
-            "nik": "0057",
+            "nik": "9957",
             "dept": "IT",
             "pos": "Karyawan",
             "date": new Date("Oct 16 2016")
         },
         {
             "name": "Dedi Karim",
-            "nik": "0059",
+            "nik": "9959",
             "dept": "IT",
             "pos": "Karyawan",
             "date": new Date("Oct 17 2016")

@@ -17,6 +17,13 @@ Template.employee_form.onRendered(function(){
     },
     "Please capitalize employee's name."
   );
+  $.validator.addMethod(
+    "first_number_not_zero",
+    function(value, element) {
+        return value[0] !== "0";
+    },
+    "NIK can't start with the number 0."
+  );
   $('form').validate({
     invalidHandler: function(event, validator) {
       // prevent processing the form further until all input is valid
@@ -29,7 +36,8 @@ Template.employee_form.onRendered(function(){
       },
       nik: {
         required: true,
-        number: true
+        number: true,
+        first_number_not_zero: true,
       },
       dept: "required",
       pos: "required",

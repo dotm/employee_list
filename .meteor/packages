@@ -28,3 +28,4 @@ session
 cfs:standard-packages
 cfs:gridfs
 cfs:graphicsmagick
+pfafman:filesaver

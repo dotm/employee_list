@@ -9,6 +9,7 @@ import "../ui/pages/login.js";
 import "../ui/pages/list.js";
 import "../ui/pages/display.js";
 import "../ui/pages/add.js";
+import "../ui/pages/download-table.js";
 import "../ui/pages/404.js";
 
 FlowRouter.route('/', {
@@ -88,6 +89,17 @@ FlowRouter.route('/display', {
         // if logged in
         if(Meteor.userId()){
             BlazeLayout.render('App_body', { main: 'display' });
+        }else{
+            FlowRouter.go('Login');
+        }
+    },
+});
+
+FlowRouter.route('/download-employees-data', {
+    action() {
+        // if logged in
+        if(Meteor.userId()){
+            BlazeLayout.render('downloadTable');
         }else{
             FlowRouter.go('Login');
         }

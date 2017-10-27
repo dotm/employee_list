@@ -1,0 +1,40 @@
+<template name="downloadTable">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Downloading File</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <div>
+                                <p id="preparation">File is being prepared. Please wait up to 10 seconds.</p>
+                                <a id="back-button" href="#" onclick="history.back();return false;">Click here to go back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table id="downloadTable" class="hidden">
+        <tbody>
+            {{#each employees}}
+                {{> employeeSimple}}
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="employeeSimple">
+    <tr>
+        <td>{{name}}</td>
+        <td>{{nik}}</td>
+        <td>{{dept}}</td>
+        <td>{{pos}}</td>
+        <td>
+            {{formatDate date}}
+        </td>
+    </tr>
+</template>

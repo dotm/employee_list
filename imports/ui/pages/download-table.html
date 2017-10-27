@@ -20,6 +20,23 @@
     </div>
     <table id="downloadTable" class="hidden">
         <tbody>
+            <tr>
+                <td>Nama Karyawan</td>
+                <td>NIK</td>
+                <td>Departemen</td>
+                <td>Posisi</td>
+                <td>
+                    Tanggal Mulai Kerja
+                </td>
+            </tr>
+            <!-- Empty row to distinguish between header (up) and employees' data (down) -->
+            <tr>
+                <td>----------------------------------</td>
+                <td>----------------------------------</td>
+                <td>----------------------------------</td>
+                <td>----------------------------------</td>
+                <td>----------------------------------</td>
+            </tr>
             {{#each employees}}
                 {{> employeeSimple}}
             {{/each}}

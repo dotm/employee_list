@@ -27,6 +27,16 @@ Template.downloadTable.onRendered(function(){
     setTimeout(function(){
         let table = $('table')[0]
         let wb = XLSX.utils.table_to_book(table)
+        let ws = wb.Sheets[wb.SheetNames[0]]
+        let wscols = [
+            {wpx: 110}, // name col
+            {wpx: 75}, // nik col
+            {wpx: 90}, // dept col
+            {wpx: 90}, // pos col
+            {wpx: 110}, // date col
+        ]
+        ws['!cols'] = wscols
+        
         let o = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
         saveAs(new Blob([s2ab(o)], {type:'application/octet-stream'}), 'Daftar Karyawan.xlsx');
         $('#preparation').hide()
